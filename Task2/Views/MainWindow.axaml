@@ -1,0 +1,35 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:LivingBeingsApp"
+        x:Class="LivingBeingsApp.MainWindow"
+        Title="Living Beings App" Width="800" Height="500">
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+    <StackPanel Margin="20" Spacing="20">
+        <TextBlock Text="Select a being:" FontSize="16" />
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <RadioButton Content="Panther" IsChecked="{Binding IsPantherSelected}" />
+            <RadioButton Content="Dog" IsChecked="{Binding IsDogSelected}" />
+            <RadioButton Content="Turtle" IsChecked="{Binding IsTurtleSelected}" />
+        </StackPanel>
+        
+        <TextBlock Text="Actions:" FontSize="16" />
+        <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button Content="Move" Click="Move_Click" />
+            <Button Content="Stop" Click="Stop_Click" />
+            <Button Content="Make Sound" Click="MakeSound_Click" />
+            <Button Content="Climb Tree" Click="ClimbTree_Click" />
+        </StackPanel>
+        
+        <TextBlock Text="Current State:" FontSize="16" />
+        <StackPanel Spacing="5">
+            <TextBlock Text="{Binding CurrentBeingType, StringFormat='Selected being: {0}'}" />
+            <TextBlock Text="{Binding CurrentSpeed, StringFormat='Current speed: {0}'}" />
+            <TextBlock Text="{Binding CurrentState, StringFormat='Current state: {0}'}" />
+        </StackPanel>
+        
+        <TextBlock Text="Action Log:" FontSize="16" />
+        <TextBox Text="{Binding ActionLog}" IsReadOnly="True" Height="150" />
+    </StackPanel>
+</Window>
